@@ -5,6 +5,7 @@ export function SimpleListView() {
     <ListView
       selectionMode="multiple"
       aria-label="Static ListView items example"
+      width="100%"
       maxWidth="size-6000"
     >
       <Item>Adobe Photoshop</Item>
