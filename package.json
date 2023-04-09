@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
     "parcel": "^2.8.3"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
