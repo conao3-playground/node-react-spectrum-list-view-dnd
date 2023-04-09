@@ -4,6 +4,7 @@
   "description": "",
   "source": "src/index.html",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "parcel",
     "build": "parcel build"
   },
