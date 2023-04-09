@@ -1,4 +1,5 @@
-import {defaultTheme, Flex, Provider, View} from '@adobe/react-spectrum';
+import {defaultTheme, Flex, Heading, Provider, View} from '@adobe/react-spectrum';
+import { SimpleListView } from './components/SimpleListView';
 
 export function App() {
   return (
@@ -8,6 +9,8 @@ export function App() {
           <View backgroundColor="celery-600" height="size-800" />
           <View backgroundColor="blue-600" height="size-800" />
           <View backgroundColor="magenta-600" height="size-800" />
+          <Heading level={1}>SimpleListView</Heading>
+          <SimpleListView />
         </Flex>
       </View>
     </Provider>
