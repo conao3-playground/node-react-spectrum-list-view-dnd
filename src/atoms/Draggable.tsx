@@ -31,17 +31,9 @@ export function Draggable(props: DragOptions) {
     ...props
   })
 
-  const DraggableStyle = {
-    display: 'inline-block',
-    border: '1px solid gray',
-    borderRadius: '5px',
-    padding: '10px',
-  }
-
   return (
     <div
-      className={`draggable${isDragging ? " dragging" : ""}`}
-      style={DraggableStyle}
+      className={`spectrum-ActionButton spectrum-ActionButton--sizeL${isDragging ? " is-dragged" : ""}`}
       {...dragProps}
     >
       Drag me
