@@ -12,19 +12,21 @@
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.3",
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.34",
     "@types/react-dom": "^18.0.11",
     "parcel": "^2.8.3"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "@adobe/react-spectrum": "^3.26.0",
+    "@spectrum-css/actionbutton": "^3.0.26",
     "@spectrum-css/button": "^9.1.0",
     "@spectrum-css/icon": "^3.0.36",
     "@spectrum-css/page": "^5.0.20",
     "@spectrum-css/tokens": "^8.0.2",
     "@spectrum-css/typography": "^4.0.30",
-    "@spectrum-css/vars": "^9.0.0",
+    "@spectrum-css/vars": "^8.0.5",
+    "@spectrum-icons/workflow": "^4.2.0",
     "modern-css-reset": "^1.4.0",
     "react": "^18.2.0",
     "react-aria": "^3.24.0",
