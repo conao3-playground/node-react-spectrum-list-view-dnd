@@ -6,8 +6,16 @@ import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 
 export function App() {
   return (
-    <Provider theme={defaultTheme} colorScheme='dark' height="100%">
+    <Provider
+      theme={defaultTheme}
+      colorScheme='dark'
+      height="100%"
+      UNSAFE_className='spectrum spectrum--medium spectrum--dark'
+    >
       <View padding="size-100">
+        <button className="spectrum-Button spectrum-Button--fill spectrum-Button--accent spectrum-Button--sizeM">
+          <span className="spectrum-Button-label">Button</span>
+        </button>
         <Flex direction="column" width="100%" maxWidth="1200px" gap="size-300" margin="0 auto">
           <View>
             <Heading level={1}>SimpleListView</Heading>
