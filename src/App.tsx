@@ -2,6 +2,7 @@ import {defaultTheme, Flex, Heading, Provider, View} from '@adobe/react-spectrum
 import { SimpleListView } from './components/SimpleListView';
 import { SimpleListViewDnd } from './components/SimpleListViewDnd';
 import { SimpleListViewDragIntoList } from './components/SimpleListViewDragIntoList';
+import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 
 export function App() {
   return (
@@ -15,6 +16,10 @@ export function App() {
           <View>
             <Heading level={1}>SimpleListViewDnd</Heading>
             <SimpleListViewDnd />
+          </View>
+          <View>
+            <Heading level={1}>SimpleListViewDndFrom</Heading>
+            <SimpleListViewDndFrom />
           </View>
           <View>
             <Heading level={1}>SimpleListViewDragIntoList</Heading>
