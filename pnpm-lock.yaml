@@ -4,6 +4,24 @@ dependencies:
   '@adobe/react-spectrum':
     specifier: ^3.26.0
     version: 3.26.0(react-dom@18.2.0)(react@18.2.0)
+  '@spectrum-css/button':
+    specifier: ^9.1.0
+    version: 9.1.0(@spectrum-css/tokens@8.0.2)
+  '@spectrum-css/icon':
+    specifier: ^3.0.36
+    version: 3.0.36(@spectrum-css/vars@9.0.0)
+  '@spectrum-css/page':
+    specifier: ^5.0.20
+    version: 5.0.20
+  '@spectrum-css/tokens':
+    specifier: ^8.0.2
+    version: 8.0.2
+  '@spectrum-css/typography':
+    specifier: ^4.0.30
+    version: 4.0.30(@spectrum-css/vars@9.0.0)
+  '@spectrum-css/vars':
+    specifier: ^9.0.0
+    version: 9.0.0
   modern-css-reset:
     specifier: ^1.4.0
     version: 1.4.0
@@ -3410,6 +3428,44 @@ packages:
     dependencies:
       '@react-types/shared': 3.18.0(react@18.2.0)
       react: 18.2.0
+    dev: false
+
+  /@spectrum-css/button@9.1.0(@spectrum-css/tokens@8.0.2):
+    resolution: {integrity: sha512-qsGmDv4uetBTnJGNM3A1Ul/AysjlEOJqGnPs01K+vVO6xdJG7RcL03/f7YvRUBmM05HCiTkK4sskElgrqYAfFA==}
+    peerDependencies:
+      '@spectrum-css/tokens': '>=8.0.0'
+    dependencies:
+      '@spectrum-css/tokens': 8.0.2
+    dev: false
+
+  /@spectrum-css/icon@3.0.36(@spectrum-css/vars@9.0.0):
+    resolution: {integrity: sha512-8FjtJoLx+rA6V0W0tqmnzIChZ5Av63w5MXOwXD0dCsJpFV4tRPvr3401xFiTNol6ds0723r90Dq+heFKM0RULw==}
+    peerDependencies:
+      '@spectrum-css/vars': ^8.0.0
+    dependencies:
+      '@spectrum-css/vars': 9.0.0
+    dev: false
+
+  /@spectrum-css/page@5.0.20:
+    resolution: {integrity: sha512-8xAtUY+iWeb1rgF4bNXt5UN1Cy4h55sgi0ldggmAgGWkjHUGKm0rGxatpgS4aN6c1SYCMRCtFHfupVJsR9Rung==}
+    dependencies:
+      '@spectrum-css/vars': 9.0.0
+    dev: false
+
+  /@spectrum-css/tokens@8.0.2:
+    resolution: {integrity: sha512-sncY3HFH8cePzTugliB/HVjoy1akpoTiDT8+gdGmlfkGP/U1cnwsYj8sLT5XHjRIojv9XIqvsz4pzkIj+z7DKg==}
+    dev: false
+
+  /@spectrum-css/typography@4.0.30(@spectrum-css/vars@9.0.0):
+    resolution: {integrity: sha512-XFHfdIyeP9+1hc9lKh8jg945li+Zg2BY3gAo5sOusUrM8m0Xn4jIvQBjP6VeSRcs0ZBLGafozHZOogKGjFAXBA==}
+    peerDependencies:
+      '@spectrum-css/vars': ^8.0.0
+    dependencies:
+      '@spectrum-css/vars': 9.0.0
+    dev: false
+
+  /@spectrum-css/vars@9.0.0:
+    resolution: {integrity: sha512-VTtkZKqwqdK96GwxmlOFNkzlDbSShJeW7kg6tEiSpwJ+Pd5b/ukRA+bZ4AN/nF3cT2HvhlZI2pO8z0muYZ0pGA==}
     dev: false
 
   /@spectrum-icons/ui@3.5.1(@react-spectrum/provider@3.7.1)(react-dom@18.2.0)(react@18.2.0):

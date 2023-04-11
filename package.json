@@ -19,6 +19,12 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "@adobe/react-spectrum": "^3.26.0",
+    "@spectrum-css/button": "^9.1.0",
+    "@spectrum-css/icon": "^3.0.36",
+    "@spectrum-css/page": "^5.0.20",
+    "@spectrum-css/tokens": "^8.0.2",
+    "@spectrum-css/typography": "^4.0.30",
+    "@spectrum-css/vars": "^9.0.0",
     "modern-css-reset": "^1.4.0",
     "react": "^18.2.0",
     "react-aria": "^3.24.0",
