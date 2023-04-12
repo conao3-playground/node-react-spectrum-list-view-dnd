@@ -10,6 +10,9 @@ dependencies:
   '@spectrum-css/button':
     specifier: ^9.1.0
     version: 9.1.0(@spectrum-css/tokens@8.0.2)
+  '@spectrum-css/dropzone':
+    specifier: ^3.0.37
+    version: 3.0.37(@spectrum-css/illustratedmessage@4.0.17)(@spectrum-css/link@4.0.25)(@spectrum-css/vars@8.0.5)
   '@spectrum-css/icon':
     specifier: ^3.0.36
     version: 3.0.36(@spectrum-css/vars@8.0.5)
@@ -3454,12 +3457,42 @@ packages:
       '@spectrum-css/tokens': 8.0.2
     dev: false
 
+  /@spectrum-css/dropzone@3.0.37(@spectrum-css/illustratedmessage@4.0.17)(@spectrum-css/link@4.0.25)(@spectrum-css/vars@8.0.5):
+    resolution: {integrity: sha512-whdXjyxMFkN9Sy8RLAeRbDxj+6MoL4XxXd9GydiJ5wBw12GYHBVOTY6AMBhDkLrfs3tcbN79/U+xXi3GmGaxOA==}
+    peerDependencies:
+      '@spectrum-css/illustratedmessage': ^4.0.0
+      '@spectrum-css/link': ^3.0.0 || ^4.0.0
+      '@spectrum-css/vars': ^8.0.0
+    dependencies:
+      '@spectrum-css/illustratedmessage': 4.0.17(@spectrum-css/typography@4.0.30)(@spectrum-css/vars@8.0.5)
+      '@spectrum-css/link': 4.0.25(@spectrum-css/tokens@8.0.2)
+      '@spectrum-css/vars': 8.0.5
+    dev: false
+
   /@spectrum-css/icon@3.0.36(@spectrum-css/vars@8.0.5):
     resolution: {integrity: sha512-8FjtJoLx+rA6V0W0tqmnzIChZ5Av63w5MXOwXD0dCsJpFV4tRPvr3401xFiTNol6ds0723r90Dq+heFKM0RULw==}
     peerDependencies:
       '@spectrum-css/vars': ^8.0.0
     dependencies:
       '@spectrum-css/vars': 8.0.5
+    dev: false
+
+  /@spectrum-css/illustratedmessage@4.0.17(@spectrum-css/typography@4.0.30)(@spectrum-css/vars@8.0.5):
+    resolution: {integrity: sha512-ZZt6jYhQEy2WEqDi15I7mdB3KA5yrRCvvLgfWqzpcXsPmbzBRA0Kli3iysk1Cxb6LW+II5sCG7i3Qd3G6hP+UA==}
+    peerDependencies:
+      '@spectrum-css/typography': ^4.0.0
+      '@spectrum-css/vars': ^8.0.0
+    dependencies:
+      '@spectrum-css/typography': 4.0.30(@spectrum-css/vars@8.0.5)
+      '@spectrum-css/vars': 8.0.5
+    dev: false
+
+  /@spectrum-css/link@4.0.25(@spectrum-css/tokens@8.0.2):
+    resolution: {integrity: sha512-Lv5f+B5QuDpRw1JPFpvm5YG+CBoJ1ZTawDDatbNVBEYPlk9dnzZibMPpEb3XSQDXpLDQLk0yLjx1H/JV7IPbWg==}
+    peerDependencies:
+      '@spectrum-css/tokens': '>=8.0.0'
+    dependencies:
+      '@spectrum-css/tokens': 8.0.2
     dev: false
 
   /@spectrum-css/page@5.0.20:
