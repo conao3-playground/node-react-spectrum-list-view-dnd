@@ -36,7 +36,7 @@ export function Draggable(props: DragOptions) {
       className={`spectrum-ActionButton spectrum-ActionButton--sizeL${isDragging ? " is-dragged" : ""}`}
       {...dragProps}
     >
-      Drag me
+      Draggable
     </div>
   )
 }

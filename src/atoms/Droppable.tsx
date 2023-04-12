@@ -23,7 +23,7 @@ export function Droppable() {
     <div
       {...dropProps}
       ref={ref}
-      className={`droppable ${isDropTarget ? 'target' : ''}`}
+      className={`spectrum-Dropzone${isDropTarget ? ' is-dragged' : ''}`}
     >
       {dropped || 'Drop here'}
     </div>
