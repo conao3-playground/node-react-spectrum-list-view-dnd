@@ -11,11 +11,11 @@ export function App() {
     <Provider
       theme={defaultTheme}
       colorScheme='dark'
-      height="100%"
+      minHeight="100vh"
       UNSAFE_className='spectrum spectrum--medium spectrum--dark'
     >
       <View padding="size-100">
-        <Flex direction="column" width="100%" maxWidth="1200px" gap="size-300" margin="0 auto">
+        <Flex direction="column" maxWidth="1200px" gap="size-300" margin="0 auto">
           <View>
             <Heading level={1}>Atoms</Heading>
             <Flex direction="column" gap="size-100">
