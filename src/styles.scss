@@ -15,6 +15,7 @@ h5
     font-weight: normal;
 }
 
-#app {
-    height: 100vh;
+.spectrum-Dropzone {
+    --spectrum-dropzone-border-width: var(--spectrum-alias-border-size-thin);
+    --spectrum-dropzone-padding: var(--spectrum-global-dimension-size-300);
 }
