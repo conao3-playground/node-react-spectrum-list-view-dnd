@@ -19,16 +19,22 @@ export interface DragOptions {
    * If true, the dragProps will omit these event handlers, and they will be applied to dragButtonProps instead.
    */
   hasDragButton?: boolean;
+
+  draggableId?: string;
 }
 
 export function Draggable(props: DragOptions) {
+  const {
+    draggableId = "draggable", ...otherProps
+  } = props;
   const { dragProps, isDragging } = useDrag({
     getItems() {
       return [{
-        'text/plain': 'hello world'
+        'text/plain': 'hello world',
+        [ draggableId ]: 'true',
       }];
     },
-    ...props
+    ...otherProps
   })
 
   return (

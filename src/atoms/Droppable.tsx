@@ -2,16 +2,24 @@ import React from 'react';
 import type { TextDropItem } from 'react-aria';
 import { useDrop } from 'react-aria';
 
-export function Droppable() {
+type DropptableProps = {
+  draggableId?: string;
+}
+
+export function Droppable(props: DropptableProps) {
+  const { draggableId = "draggable" } = props;
   let [dropped, setDropped] = React.useState<string | null>(null);
   let ref = React.useRef(null);
   let { dropProps, isDropTarget } = useDrop({
     ref,
     async onDrop(e) {
+      console.log(e);
       let items = await Promise.all(
         e.items
           .filter((item) =>
-            item.kind === 'text' && item.types.has('text/plain')
+            item.kind === 'text' &&
+            item.types.has('text/plain') &&
+            item.types.has(draggableId)
           )
           .map((item) => (item as TextDropItem).getText('text/plain'))
       );

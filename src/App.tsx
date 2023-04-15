@@ -5,6 +5,7 @@ import { SimpleListViewDragIntoList } from './components/SimpleListViewDragIntoL
 import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
+import { DraggableDroppable } from './molecules/DraggableDroppable';
 
 export function App() {
   return (
@@ -26,6 +27,13 @@ export function App() {
               <View>
                 <Heading level={2}>Droppable</Heading>
                 <Droppable />
+              </View>
+            </Flex>
+            <Heading level={1}>Molecules</Heading>
+            <Flex direction="column" gap="size-100">
+              <View>
+                <Heading level={2}>DraggableDroppable</Heading>
+                <DraggableDroppable />
               </View>
             </Flex>
           </View>
