@@ -1,7 +1,7 @@
 import { Flex, Item, ListView, useDragAndDrop, useListData } from "@adobe/react-spectrum";
 import { Droppable } from "../atoms/Droppable";
 
-export function SimpleListViewDnd() {
+export function DraggableListView() {
   const draggableId = "SimpleListViewDnd";
   const lst = useListData({
     initialItems: [

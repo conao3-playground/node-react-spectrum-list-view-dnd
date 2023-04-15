@@ -1,6 +1,6 @@
 import {defaultTheme, Flex, Heading, Provider, View} from '@adobe/react-spectrum';
 import { SimpleListView } from './components/SimpleListView';
-import { SimpleListViewDnd } from './components/SimpleListViewDnd';
+import { DraggableListView } from './molecules/DraggableListView';
 import { SimpleListViewDragIntoList } from './components/SimpleListViewDragIntoList';
 import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 import { Draggable } from './atoms/Draggable';
@@ -19,7 +19,11 @@ export function App() {
         <Flex direction="column" maxWidth="1200px" gap="size-300" margin="0 auto">
           <View>
             <Heading level={1}>Atoms</Heading>
-            <Flex direction="column" gap="size-100">
+            <Flex direction="column" gap="size-300">
+              <View>
+                <Heading level={2}>ListView</Heading>
+                <SimpleListView />
+              </View>
               <View>
                 <Heading level={2}>Draggable</Heading>
                 <Draggable />
@@ -30,20 +34,16 @@ export function App() {
               </View>
             </Flex>
             <Heading level={1}>Molecules</Heading>
-            <Flex direction="column" gap="size-100">
+            <Flex direction="column" gap="size-300">
               <View>
                 <Heading level={2}>DraggableDroppable</Heading>
                 <DraggableDroppable />
               </View>
+              <View>
+                <Heading level={2}>DraggableListView</Heading>
+                <DraggableListView />
+              </View>
             </Flex>
-          </View>
-          <View>
-            <Heading level={1}>SimpleListView</Heading>
-            <SimpleListView />
-          </View>
-          <View>
-            <Heading level={1}>SimpleListViewDnd</Heading>
-            <SimpleListViewDnd />
           </View>
           <View>
             <Heading level={1}>SimpleListViewDndFrom</Heading>
