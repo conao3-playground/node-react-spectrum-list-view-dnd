@@ -1,13 +1,22 @@
-import {defaultTheme, Flex, Heading, Provider, View} from '@adobe/react-spectrum';
-import { SimpleListView } from './components/SimpleListView';
+import {defaultTheme, Flex, Heading, Provider, useListData, View} from '@adobe/react-spectrum';
 import { DraggableListView } from './molecules/DraggableListView';
 import { SimpleListViewDragIntoList } from './components/SimpleListViewDragIntoList';
 import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
 import { DraggableDroppable } from './molecules/DraggableDroppable';
+import { MyListView } from './atoms/MyListView';
 
 export function App() {
+  const initialItems = [
+    {id: '1', name: 'Adobe Photoshop'},
+    {id: '2', name: 'Adobe InDesign'},
+    {id: '3', name: 'Adobe AfterEffects'},
+    {id: '4', name: 'Adobe Illustrator'},
+    {id: '5', name: 'Adobe Lightroom'},
+  ]
+  const myListViewLst = useListData({initialItems});
+
   return (
     <Provider
       theme={defaultTheme}
@@ -22,7 +31,7 @@ export function App() {
             <Flex direction="column" gap="size-300">
               <View>
                 <Heading level={2}>ListView</Heading>
-                <SimpleListView />
+                <MyListView lst={myListViewLst} />
               </View>
               <View>
                 <Heading level={2}>Draggable</Heading>
