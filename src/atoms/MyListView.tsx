@@ -1,22 +1,25 @@
-import { Item, ListData, ListView } from "@adobe/react-spectrum";
+import { Item, ListData, ListView, SpectrumListViewProps } from "@adobe/react-spectrum";
+import { forwardRef } from "react";
 
 interface ItemData {
   id: string;
   name: string;
 };
 
-type MyListViewProps<T extends ItemData> = {
+interface MyListViewProps<T extends ItemData> extends Omit<SpectrumListViewProps<T>, "children"> {
   lst: ListData<T>;
 }
 
-export function MyListView<T extends ItemData>(props: MyListViewProps<T>) {
+function _MyListView<T extends ItemData>(props: MyListViewProps<T>) {
+  const { lst, ...rest } = props;
   return (
     <ListView
       selectionMode="multiple"
       aria-label="Static ListView items example"
       width="100%"
       maxWidth="size-6000"
-      items={props.lst.items}
+      items={lst.items}
+      {...rest}
     >
       {(item) => (
         <Item key={item.id}>{item.name}</Item>
@@ -24,3 +27,5 @@ export function MyListView<T extends ItemData>(props: MyListViewProps<T>) {
     </ListView>
   )
 }
+
+export const MyListView = forwardRef(_MyListView);

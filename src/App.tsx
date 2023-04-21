@@ -6,6 +6,7 @@ import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
 import { DraggableDroppable } from './molecules/DraggableDroppable';
 import { MyListView } from './atoms/MyListView';
+import { useRef } from 'react';
 
 export function App() {
   const initialItems = [
