@@ -6,7 +6,6 @@ import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
 import { DraggableDroppable } from './molecules/DraggableDroppable';
 import { MyListView } from './atoms/MyListView';
-import { useRef } from 'react';
 
 export function App() {
   const initialItems = [
@@ -23,7 +22,6 @@ export function App() {
       theme={defaultTheme}
       colorScheme='dark'
       minHeight="100vh"
-      UNSAFE_className='spectrum spectrum--medium spectrum--dark'
     >
       <View padding="size-100">
         <Flex direction="column" maxWidth="1200px" gap="size-300" margin="0 auto">
