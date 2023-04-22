@@ -23,6 +23,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "dependencies": {
     "@adobe/react-spectrum": "^3.26.0",
+    "@react-types/shared": "^3.18.0",
     "@spectrum-icons/workflow": "^4.2.0",
     "modern-css-reset": "^1.4.0",
     "react": "^18.2.0",
