@@ -1,9 +1,9 @@
-import { DropItem, DroppableCollectionDropEvent, DroppableCollectionInsertDropEvent, DroppableCollectionRootDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
+import { DropItem, DroppableCollectionDropEvent, DroppableCollectionInsertDropEvent, DroppableCollectionOnItemDropEvent, DroppableCollectionRootDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
 import { ItemData, MyListView, MyListViewProps } from "../atoms/MyListView";
 import { Draggable } from "../atoms/Draggable";
 import { useState } from "react";
 
-export type Action = 'onDrop' | 'onInsert' | 'onRootDrop';
+export type Action = 'onDrop' | 'onInsert' | 'onRootDrop' | 'onItemDrop';
 export interface DroppableListViewProps<T extends ItemData> extends MyListViewProps<T> {
   actions: Action[];
 };
@@ -97,10 +97,19 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     props.lst.append(...processedItems);
   }
 
+  const onItemDropFn = async (e: DroppableCollectionOnItemDropEvent) => {
+    console.log(e);
+    const { items, target } = e;
+    const origItem = props.lst.getItem(target.key);
+    setCnt((cnt) => cnt + 1);
+    props.lst.update(target.key, {...origItem, name: `${origItem.name} updated ${cnt}` })
+  }
+
   const actionFn = {
     'onDrop': onDropFn,
     'onInsert': onInsertFn,
     'onRootDrop': onRootDropFn,
+    'onItemDrop': onItemDropFn,
   }
 
   const { dragAndDropHooks } = useDragAndDrop({
@@ -108,6 +117,7 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     ...(actions.includes('onDrop') ? {onDrop: actionFn['onDrop']} : {}),
     ...(actions.includes('onInsert') ? {onInsert: actionFn['onInsert']} : {}),
     ...(actions.includes('onRootDrop') ? {onRootDrop: actionFn['onRootDrop']} : {}),
+    ...(actions.includes('onItemDrop') ? {onItemDrop: actionFn['onItemDrop']} : {}),
   });
 
   return (

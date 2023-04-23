@@ -21,6 +21,7 @@ export function App() {
   const droppableListViewLst_onDrop = useListData({initialItems});
   const droppableListViewLst_onInsert = useListData({initialItems});
   const droppableListViewLst_onRootDrop = useListData({initialItems});
+  const droppableListViewLst_onItemDrop = useListData({initialItems});
 
   return (
     <Provider
@@ -67,6 +68,10 @@ export function App() {
               <View>
                 <Heading level={2}>DroppableListView [onRootDrop]</Heading>
                 <DroppableListView lst={droppableListViewLst_onRootDrop} actions={["onRootDrop"]}/>
+              </View>
+              <View>
+                <Heading level={2}>DroppableListView [onItemDrop]</Heading>
+                <DroppableListView lst={droppableListViewLst_onItemDrop} actions={["onItemDrop"]}/>
               </View>
             </Flex>
           </View>
