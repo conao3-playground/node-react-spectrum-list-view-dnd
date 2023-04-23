@@ -1,13 +1,12 @@
 import { DragOptions as _DragOptions, useDrag } from "react-aria";
-import { MyView } from "./MyView";
-import { DOMRef } from "@react-types/shared";
-import { forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
+import { getBorderColorValue, getBorderRadiusValue, getBorderSizeValue, getDimensionValue } from "../utils/reactSpectrum";
 
 export interface DragOptions extends Omit<_DragOptions, 'getItems'> {
   draggableId?: string;
 }
 
-function _Draggable(props: DragOptions, ref: DOMRef) {
+function _Draggable(props: DragOptions, ref: ForwardedRef<HTMLDivElement>) {
   const {
     draggableId = "draggable", ...otherProps
   } = props;
@@ -22,19 +21,20 @@ function _Draggable(props: DragOptions, ref: DOMRef) {
   })
 
   return (
-    <MyView
-      borderColor="default"
-      borderWidth="thin"
-      padding="size-100"
-      borderRadius="regular"
-      ref={ref}
-      UNSAFE_style={{
+    <div
+      style={{
+        borderColor: getBorderColorValue("default"),
+        borderWidth: getBorderSizeValue("thin"),
+        borderStyle: "solid",
+        padding: getDimensionValue("size-100"),
+        borderRadius: getBorderRadiusValue("regular"),
         opacity: isDragging ? 0.5 : 1,
       }}
-      UNSAFE_props={dragProps}
+      ref={ref}
+      {...dragProps}
     >
       Draggable
-    </MyView>
+    </div>
   )
 }
 

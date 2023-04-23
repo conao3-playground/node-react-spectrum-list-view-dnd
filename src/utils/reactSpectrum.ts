@@ -16,7 +16,10 @@ export function getDimensionValue(val: DimensionValue) {
   return getRSValue(`global-dimension-${val}`)
 }
 
-export function getBorderColorValue(val: BorderColorAlias) {
+export function getBorderColorValue(val: BorderColorAlias | 'default') {
+  if (val === 'default') {
+    return getRSValue(`alias-border-color`)
+  }
   return getRSValue(`alias-border-color-${val}`)
 }
 
@@ -26,6 +29,18 @@ export function getBorderSizeValue(val: BorderSizeValue) {
 
 export function getBorderRadiusValue(val: BorderRadiusValue) {
   return getRSValue(`alias-border-radius-${val}`)
+}
+
+type SemanticColorValue =
+  | 'negative'
+  | 'notice'
+  | 'positive'
+  | 'informative'
+  | 'neutral'
+  | 'presence';
+
+export function getSemanticColorValue(semantic: SemanticColorValue, val: string) {
+  return getRSValue(`semantic-${semantic}-color-${val}`)
 }
 
 export function getColorValue(val: ColorValue) {
