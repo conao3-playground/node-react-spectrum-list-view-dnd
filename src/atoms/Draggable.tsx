@@ -1,6 +1,6 @@
 import { RefObject } from "react";
 import { DragEndEvent, DragItem, DragMoveEvent, DragPreviewRenderer, DragStartEvent, DropOperation, useDrag } from "react-aria";
-import { getBorderColorValue, getBorderRadiusValue, getBorderSizeValue, getDimensionValue } from "../utils/reactSpectrum";
+import { MyView } from "./MyView";
 
 export interface DragOptions {
   /** Handler that is called when a drag operation is started. */
@@ -39,18 +39,18 @@ export function Draggable(props: DragOptions) {
   })
 
   return (
-    <div
-      style={{
+    <MyView
+      borderColor="default"
+      borderWidth="thin"
+      padding="size-100"
+      borderRadius="regular"
+      filterDomProps={false}
+      UNSAFE_style={{
         opacity: isDragging ? 0.5 : 1,
-        borderColor: getBorderColorValue("dark"),
-        borderWidth: getBorderSizeValue("thin"),
-        borderRadius: getBorderRadiusValue("regular"),
-        borderStyle: "solid",
-        padding: getDimensionValue("size-100"),
       }}
       {...dragProps}
     >
       Draggable
-    </div>
+    </MyView>
   )
 }

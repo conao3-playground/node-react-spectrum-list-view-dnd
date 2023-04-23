@@ -1,7 +1,7 @@
 import React from 'react';
 import type { TextDropItem } from 'react-aria';
 import { useDrop } from 'react-aria';
-import { getBorderColorValue, getBorderRadiusValue, getBorderSizeValue, getDimensionValue } from '../utils/reactSpectrum';
+import { MyView } from './MyView';
 
 type DropptableProps = {
   draggableId?: string;
@@ -29,19 +29,20 @@ export function Droppable(props: DropptableProps) {
   });
 
   return (
-    <div
-      {...dropProps}
+    <MyView
+      backgroundColor={isDropTarget ? "blue-400" : "transparent"}
+      borderColor={isDropTarget ? "transparent" : "default"}
+      borderWidth="thin"
+      padding="size-100"
+      borderRadius="regular"
+      filterDomProps={false}
       ref={ref}
-      style={{
-        borderColor: getBorderColorValue("dark"),
-        borderWidth: getBorderSizeValue("thin"),
-        borderRadius: getBorderRadiusValue("regular"),
+      UNSAFE_style={{
         borderStyle: "dashed",
-        padding: getDimensionValue("size-100"),
-        backgroundColor: isDropTarget ? 'var(--spectrum-accent-background-color-key-focus)' : 'transparent',
       }}
+      {...dropProps}
     >
       {dropped || 'Drop here'}
-    </div>
-  );
+    </MyView>
+  )
 }
