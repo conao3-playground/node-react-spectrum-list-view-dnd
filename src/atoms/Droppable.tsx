@@ -35,7 +35,6 @@ export function Droppable(props: DropptableProps) {
   return (
     <MyView
       padding="size-100"
-      filterDomProps={false}
       ref={ref}
       UNSAFE_style={{
         borderRadius: getBorderRadiusValue("regular"),
@@ -44,7 +43,7 @@ export function Droppable(props: DropptableProps) {
         borderStyle: isDropTarget ? "solid" : "dashed",
         backgroundColor: isDropTarget ? getAliasValue("highlight-selected") : "transparent",
       }}
-      {...dropProps}
+      UNSAFE_props={dropProps}
     >
       {dropped || 'Drop here'}
     </MyView>

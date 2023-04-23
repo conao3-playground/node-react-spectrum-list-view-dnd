@@ -17,7 +17,7 @@ import {forwardRef, ReactElement} from 'react';
 import {ViewProps as _ViewProps} from '@adobe/react-spectrum';
 
 interface ViewProps<C extends ColorVersion> extends _ViewProps<C> {
-  filterDomProps?: boolean;
+  UNSAFE_props?: React.HTMLAttributes<HTMLElement>;
 }
 
 function View<C extends ColorVersion>(props: ViewProps<C>, ref: DOMRef) {
@@ -25,7 +25,7 @@ function View<C extends ColorVersion>(props: ViewProps<C>, ref: DOMRef) {
   const {
     elementType: ElementType = 'div',
     children,
-    filterDomProps = true,
+    UNSAFE_props = {},
     ...otherProps
   } = props;
   const {styleProps} = useStyleProps(props, viewStyleProps);
@@ -33,8 +33,9 @@ function View<C extends ColorVersion>(props: ViewProps<C>, ref: DOMRef) {
 
   return (
     <ElementType
-      {...(filterDomProps ? filterDOMProps(props) : otherProps)}
+      {...filterDOMProps(props)}
       {...styleProps}
+      {...UNSAFE_props}
       ref={domRef}>
       <ClearSlots>
         {children}

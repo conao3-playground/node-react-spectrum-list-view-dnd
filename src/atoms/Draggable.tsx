@@ -27,12 +27,11 @@ function _Draggable(props: DragOptions, ref: DOMRef) {
       borderWidth="thin"
       padding="size-100"
       borderRadius="regular"
-      filterDomProps={false}
       ref={ref}
       UNSAFE_style={{
         opacity: isDragging ? 0.5 : 1,
       }}
-      {...dragProps}
+      UNSAFE_props={dragProps}
     >
       Draggable
     </MyView>
