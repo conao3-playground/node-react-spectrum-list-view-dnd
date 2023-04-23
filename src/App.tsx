@@ -1,7 +1,5 @@
 import {defaultTheme, Flex, Heading, Provider, useListData, View} from '@adobe/react-spectrum';
 import { DraggableListView } from './molecules/DraggableListView';
-import { SimpleListViewDragIntoList } from './components/SimpleListViewDragIntoList';
-import { SimpleListViewDndFrom } from './components/SimpleListViewDndFrom';
 import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
 import { DraggableDroppable } from './molecules/DraggableDroppable';
@@ -79,14 +77,6 @@ export function App() {
                 <DroppableListView lst={droppableListViewLst_onReorder} actions={["onReorder"]}/>
               </View>
             </Flex>
-          </View>
-          <View>
-            <Heading level={1}>SimpleListViewDndFrom</Heading>
-            <SimpleListViewDndFrom />
-          </View>
-          <View>
-            <Heading level={1}>SimpleListViewDragIntoList</Heading>
-            <SimpleListViewDragIntoList />
           </View>
         </Flex>
       </View>
