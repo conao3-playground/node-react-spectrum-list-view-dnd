@@ -22,6 +22,7 @@ export function App() {
   const droppableListViewLst_onInsert = useListData({initialItems});
   const droppableListViewLst_onRootDrop = useListData({initialItems});
   const droppableListViewLst_onItemDrop = useListData({initialItems});
+  const droppableListViewLst_onReorder = useListData({initialItems});
 
   return (
     <Provider
@@ -72,6 +73,10 @@ export function App() {
               <View>
                 <Heading level={2}>DroppableListView [onItemDrop]</Heading>
                 <DroppableListView lst={droppableListViewLst_onItemDrop} actions={["onItemDrop"]}/>
+              </View>
+              <View>
+                <Heading level={2}>DroppableListView [onReorder]</Heading>
+                <DroppableListView lst={droppableListViewLst_onReorder} actions={["onReorder"]}/>
               </View>
             </Flex>
           </View>

@@ -1,9 +1,9 @@
-import { DropItem, DroppableCollectionDropEvent, DroppableCollectionInsertDropEvent, DroppableCollectionOnItemDropEvent, DroppableCollectionRootDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
+import { DropItem, DroppableCollectionDropEvent, DroppableCollectionInsertDropEvent, DroppableCollectionOnItemDropEvent, DroppableCollectionReorderEvent, DroppableCollectionRootDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
 import { ItemData, MyListView, MyListViewProps } from "../atoms/MyListView";
 import { Draggable } from "../atoms/Draggable";
-import { useState } from "react";
+import { Key, useState } from "react";
 
-export type Action = 'onDrop' | 'onInsert' | 'onRootDrop' | 'onItemDrop';
+export type Action = 'onDrop' | 'onInsert' | 'onRootDrop' | 'onItemDrop' | 'onReorder';
 export interface DroppableListViewProps<T extends ItemData> extends MyListViewProps<T> {
   actions: Action[];
 };
@@ -105,19 +105,45 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     props.lst.update(target.key, {...origItem, name: `${origItem.name} updated ${cnt}` })
   }
 
-  const actionFn = {
-    'onDrop': onDropFn,
-    'onInsert': onInsertFn,
-    'onRootDrop': onRootDropFn,
-    'onItemDrop': onItemDropFn,
+  const onReorderProps = {
+    'getItems': (keys: Set<Key>) => [...keys].map(key => {
+      const item = props.lst.getItem(key);
+      return {
+        'text/plain': item.name,
+        [ draggableId ]: 'true',
+      }
+    }),
+    'onReorder': async (e: DroppableCollectionReorderEvent) => {
+      console.log(e);
+      const { keys, target } = e;
+      switch (target.dropPosition) {
+        case 'before':
+          props.lst.moveBefore(target.key, keys)
+          break;
+        case 'after':
+          props.lst.moveAfter(target.key, keys)
+          break;
+        default:
+          throw new Error(`Unexpected dropPosition: ${target.dropPosition}`)
+      }
+    },
+  }
+
+  const actionProps = {
+    'onDrop': {'onDrop': onDropFn},
+    'onInsert': {'onInsert': onInsertFn},
+    'onRootDrop': {'onRootDrop': onRootDropFn},
+    'onItemDrop': {'onItemDrop': onItemDropFn},
+    'onReorder': onReorderProps,
   }
 
   const { dragAndDropHooks } = useDragAndDrop({
     acceptedDragTypes: [draggableId],
-    ...(actions.includes('onDrop') ? {onDrop: actionFn['onDrop']} : {}),
-    ...(actions.includes('onInsert') ? {onInsert: actionFn['onInsert']} : {}),
-    ...(actions.includes('onRootDrop') ? {onRootDrop: actionFn['onRootDrop']} : {}),
-    ...(actions.includes('onItemDrop') ? {onItemDrop: actionFn['onItemDrop']} : {}),
+    ...(actions.includes('onDrop') ? actionProps['onDrop'] : {}),
+    ...(actions.includes('onInsert') ? actionProps['onInsert'] : {}),
+    ...(actions.includes('onRootDrop') ? actionProps['onRootDrop'] : {}),
+    ...(actions.includes('onItemDrop') ? actionProps['onItemDrop'] : {}),
+    ...(actions.includes('onReorder') ? actionProps['onReorder'] : {}),
   });
 
   return (
