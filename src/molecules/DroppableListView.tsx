@@ -12,29 +12,33 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
   const draggableId = "DroppableListView";
   const { actions, ...rest } = props;
   const [ cnt, setCnt ] = useState(0);
-  const action_fn = {
-    'onInsert': async (e: any) => {
-      console.log(e);
-      const { items, target } = e;
-      const processedItems = await Promise.all(
-        items.map(async (item: TextDropItem) => {
-          setCnt((cnt) => cnt + 1);
-          return {
-            id: 'tmp' + cnt,
-            name: await item.getText('text/plain') + ` ${cnt}`,
-          }
-        })
-      );
-      if (target.dropPosition === 'before') {
-        props.lst.insertBefore(target.key, ...processedItems)
-      } else {
-        props.lst.insertAfter(target.key, ...processedItems)
-      }
+
+  const onInsertFn = async (e: any) => {
+    console.log(e);
+    const { items, target } = e;
+    const processedItems = await Promise.all(
+      items.map(async (item: TextDropItem) => {
+        setCnt((cnt) => cnt + 1);
+        return {
+          id: 'tmp' + cnt,
+          name: await item.getText('text/plain') + ` ${cnt}`,
+        }
+      })
+    );
+    if (target.dropPosition === 'before') {
+      props.lst.insertBefore(target.key, ...processedItems)
+    } else {
+      props.lst.insertAfter(target.key, ...processedItems)
     }
   }
+
+  const actionFn = {
+    'onInsert': onInsertFn
+  }
+
   const { dragAndDropHooks } = useDragAndDrop({
     acceptedDragTypes: [draggableId],
-    ...(actions.includes('onInsert') ? {onInsert: action_fn['onInsert']} : {})
+    ...(actions.includes('onInsert') ? {onInsert: actionFn['onInsert']} : {})
   });
 
   return (
