@@ -1,11 +1,11 @@
 import { Item, ListData, ListView, SpectrumListViewProps } from "@adobe/react-spectrum";
 
-interface ItemData {
+export interface ItemData {
   id: string;
   name: string;
 };
 
-interface MyListViewProps<T extends ItemData> extends Omit<SpectrumListViewProps<T>, "children"> {
+export interface MyListViewProps<T extends ItemData> extends Omit<SpectrumListViewProps<T>, "children"> {
   lst: ListData<T>;
 }
 

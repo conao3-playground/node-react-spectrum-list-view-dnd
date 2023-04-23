@@ -1,39 +1,22 @@
-import { Flex, Item, ListView, useDragAndDrop, useListData } from "@adobe/react-spectrum";
+import { Flex, useDragAndDrop } from "@adobe/react-spectrum";
 import { Droppable } from "../atoms/Droppable";
+import { ItemData, MyListView, MyListViewProps } from "../atoms/MyListView";
 
-export function DraggableListView() {
-  const draggableId = "SimpleListViewDnd";
-  const lst = useListData({
-    initialItems: [
-      {id: '1', name: 'Adobe Photoshop'},
-      {id: '2', name: 'Adobe InDesign'},
-      {id: '3', name: 'Adobe AfterEffects'},
-      {id: '4', name: 'Adobe Illustrator'},
-      {id: '5', name: 'Adobe Lightroom'},
-    ]
-  });
+export interface DraggableListViewProps<T extends ItemData> extends MyListViewProps<T> {};
+
+export function DraggableListView<T extends ItemData>(props: DraggableListViewProps<T>) {
+  const draggableId = "DraggableListView";
   const { dragAndDropHooks } = useDragAndDrop({
     getItems: (keys) => [...keys].map((key) => ({
       [ draggableId ]: 'true',
-      'text/plain': String(lst.getItem(key).name),
+      'text/plain': String(props.lst.getItem(key).name),
     })),
   });
 
-  return <>
+  return (
     <Flex wrap gap="size-200">
-      <ListView
-        selectionMode="multiple"
-        aria-label="Static ListView items example"
-        width="100%"
-        maxWidth="size-6000"
-        dragAndDropHooks={dragAndDropHooks}
-        items={lst.items}
-      >
-        {(item) => (
-          <Item key={item.id}>{item.name}</Item>
-        )}
-      </ListView>
-      <Droppable draggableId={draggableId}/>
+      <MyListView dragAndDropHooks={dragAndDropHooks} {...props} />
+      <Droppable draggableId={draggableId} />
     </Flex>
-  </>
+  )
 }

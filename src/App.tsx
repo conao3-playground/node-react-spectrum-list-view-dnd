@@ -16,6 +16,7 @@ export function App() {
     {id: '5', name: 'Adobe Lightroom'},
   ]
   const myListViewLst = useListData({initialItems});
+  const DraggableListViewLst = useListData({initialItems});
 
   return (
     <Provider
@@ -49,7 +50,7 @@ export function App() {
               </View>
               <View>
                 <Heading level={2}>DraggableListView</Heading>
-                <DraggableListView />
+                <DraggableListView lst={DraggableListViewLst} />
               </View>
             </Flex>
           </View>
