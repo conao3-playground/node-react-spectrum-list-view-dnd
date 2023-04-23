@@ -1,5 +1,4 @@
 import { Item, ListData, ListView, SpectrumListViewProps } from "@adobe/react-spectrum";
-import { forwardRef } from "react";
 
 interface ItemData {
   id: string;
@@ -10,7 +9,7 @@ interface MyListViewProps<T extends ItemData> extends Omit<SpectrumListViewProps
   lst: ListData<T>;
 }
 
-function _MyListView<T extends ItemData>(props: MyListViewProps<T>) {
+export function MyListView<T extends ItemData>(props: MyListViewProps<T>) {
   const { lst, ...rest } = props;
   return (
     <ListView
@@ -27,5 +26,3 @@ function _MyListView<T extends ItemData>(props: MyListViewProps<T>) {
     </ListView>
   )
 }
-
-export const MyListView = forwardRef(_MyListView);
