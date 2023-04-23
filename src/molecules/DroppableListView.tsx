@@ -3,7 +3,7 @@ import { ItemData, MyListView, MyListViewProps } from "../atoms/MyListView";
 import { Draggable } from "../atoms/Draggable";
 import { useState } from "react";
 
-export type Action = 'onInsert';
+export type Action = 'onInsert' | 'onRootDrop';
 export interface DroppableListViewProps<T extends ItemData> extends MyListViewProps<T> {
   actions: Action[];
 };
@@ -32,13 +32,30 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     }
   }
 
+  const onRootDropFn = async (e: any) => {
+    console.log(e);
+    const { items } = e;
+    const processedItems = await Promise.all(
+      items.map(async (item: TextDropItem) => {
+        setCnt((cnt) => cnt + 1);
+        return {
+          id: 'tmp' + cnt,
+          name: await item.getText('text/plain') + ` ${cnt}`,
+        }
+      })
+    );
+    props.lst.append(...processedItems);
+  }
+
   const actionFn = {
-    'onInsert': onInsertFn
+    'onInsert': onInsertFn,
+    'onRootDrop': onRootDropFn,
   }
 
   const { dragAndDropHooks } = useDragAndDrop({
     acceptedDragTypes: [draggableId],
-    ...(actions.includes('onInsert') ? {onInsert: actionFn['onInsert']} : {})
+    ...(actions.includes('onInsert') ? {onInsert: actionFn['onInsert']} : {}),
+    ...(actions.includes('onRootDrop') ? {onRootDrop: actionFn['onRootDrop']} : {}),
   });
 
   return (
