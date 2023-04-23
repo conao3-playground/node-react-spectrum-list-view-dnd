@@ -18,6 +18,7 @@ export function App() {
   ]
   const myListViewLst = useListData({initialItems});
   const draggableListViewLst = useListData({initialItems});
+  const droppableListViewLst_onDrop = useListData({initialItems});
   const droppableListViewLst_onInsert = useListData({initialItems});
   const droppableListViewLst_onRootDrop = useListData({initialItems});
 
@@ -54,6 +55,10 @@ export function App() {
               <View>
                 <Heading level={2}>DraggableListView</Heading>
                 <DraggableListView lst={draggableListViewLst} />
+              </View>
+              <View>
+                <Heading level={2}>DroppableListView [onDrop]</Heading>
+                <DroppableListView lst={droppableListViewLst_onDrop} actions={["onDrop"]}/>
               </View>
               <View>
                 <Heading level={2}>DroppableListView [onInsert]</Heading>
