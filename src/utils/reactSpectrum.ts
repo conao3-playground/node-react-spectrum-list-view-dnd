@@ -32,6 +32,10 @@ export function getColorValue(val: ColorValue) {
   return getRSValue(val);
 }
 
+export function getAliasValue(val: string) {
+  return getRSValue(`alias-${val}`)
+}
+
 export function getRSValue(val: string) {
   return `var(--spectrum-${val})`
 }
