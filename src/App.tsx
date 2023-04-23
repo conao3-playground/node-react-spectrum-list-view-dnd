@@ -6,6 +6,7 @@ import { Draggable } from './atoms/Draggable';
 import { Droppable } from './atoms/Droppable';
 import { DraggableDroppable } from './molecules/DraggableDroppable';
 import { MyListView } from './atoms/MyListView';
+import { DroppableListView } from './molecules/DroppableListView';
 
 export function App() {
   const initialItems = [
@@ -16,7 +17,8 @@ export function App() {
     {id: '5', name: 'Adobe Lightroom'},
   ]
   const myListViewLst = useListData({initialItems});
-  const DraggableListViewLst = useListData({initialItems});
+  const draggableListViewLst = useListData({initialItems});
+  const droppableListViewLst = useListData({initialItems});
 
   return (
     <Provider
@@ -50,7 +52,11 @@ export function App() {
               </View>
               <View>
                 <Heading level={2}>DraggableListView</Heading>
-                <DraggableListView lst={DraggableListViewLst} />
+                <DraggableListView lst={draggableListViewLst} />
+              </View>
+              <View>
+                <Heading level={2}>DroppableListView</Heading>
+                <DroppableListView lst={droppableListViewLst} actions={["onInsert"]}/>
               </View>
             </Flex>
           </View>
