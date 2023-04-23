@@ -22,14 +22,14 @@ interface ViewProps<C extends ColorVersion> extends _ViewProps<C> {
 
 function View<C extends ColorVersion>(props: ViewProps<C>, ref: DOMRef) {
   props = useSlotProps(props);
-  let {
+  const {
     elementType: ElementType = 'div',
     children,
     filterDomProps = true,
     ...otherProps
   } = props;
-  let {styleProps} = useStyleProps(props, viewStyleProps);
-  let domRef = useDOMRef(ref);
+  const {styleProps} = useStyleProps(props, viewStyleProps);
+  const domRef = useDOMRef(ref);
 
   return (
     <ElementType

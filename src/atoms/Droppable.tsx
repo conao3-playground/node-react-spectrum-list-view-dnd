@@ -13,13 +13,13 @@ type DropptableProps = {
 
 export function Droppable(props: DropptableProps) {
   const { draggableId = "draggable" } = props;
-  let [dropped, setDropped] = React.useState<string | null>(null);
-  let ref = React.useRef(null);
-  let { dropProps, isDropTarget } = useDrop({
+  const [dropped, setDropped] = React.useState<string | null>(null);
+  const ref = React.useRef(null);
+  const { dropProps, isDropTarget } = useDrop({
     ref,
     async onDrop(e) {
       console.log(e);
-      let items = await Promise.all(
+      const items = await Promise.all(
         e.items
           .filter((item) =>
             item.kind === 'text' &&

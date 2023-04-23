@@ -12,13 +12,13 @@ interface DndListViewProps extends DragAndDropOptions {
 }
 
 function DraggableListView(props: DndListViewProps) {
-  let { list, ...otherProps } = props;
-  let { dragAndDropHooks } = useDragAndDrop({
+  const { list, ...otherProps } = props;
+  const { dragAndDropHooks } = useDragAndDrop({
     // Only allow move operations when dropping items from this list
     getAllowedDropOperations: () => ['move'],
     getItems: (keys) =>
       [...keys].map((key) => {
-        let item = list.getItem(key);
+        const item = list.getItem(key);
         // Setup the drag types and associated info for each dragged item.
         return {
           'custom-app-type': JSON.stringify(item),
@@ -26,7 +26,7 @@ function DraggableListView(props: DndListViewProps) {
         };
       }),
     onDragEnd: (e) => {
-      let {
+      const {
         dropOperation,
         keys
       } = e;
@@ -55,17 +55,17 @@ function DraggableListView(props: DndListViewProps) {
 }
 
 function DroppableListView(props: DndListViewProps) {
-  let { list, ...otherProps } = props;
-  let { dragAndDropHooks } = useDragAndDrop({
+  const { list, ...otherProps } = props;
+  const { dragAndDropHooks } = useDragAndDrop({
     // Only accept items with the following drag type
     acceptedDragTypes: ['custom-app-type'],
     onInsert: async (e) => {
-      let {
+      const {
         items,
         target
       } = e;
 
-      let processedItems = await Promise.all(
+      const processedItems = await Promise.all(
         items.map(async (item) =>
           JSON.parse(await (item as TextDropItem).getText('custom-app-type'))
         )
@@ -78,8 +78,8 @@ function DroppableListView(props: DndListViewProps) {
       }
     },
     onRootDrop: async (e) => {
-      let { items } = e;
-      let processedItems = await Promise.all(
+      const { items } = e;
+      const processedItems = await Promise.all(
         items.map(async (item) =>
           JSON.parse(await (item as TextDropItem).getText('custom-app-type'))
         )
@@ -106,7 +106,7 @@ function DroppableListView(props: DndListViewProps) {
 }
 
 export function SimpleListViewDragIntoList() {
-  let sourceList = useListData({
+  const sourceList = useListData({
     initialItems: [
       { id: '1', type: 'file', name: 'Adobe Photoshop' },
       { id: '2', type: 'file', name: 'Adobe XD' },
@@ -115,7 +115,7 @@ export function SimpleListViewDragIntoList() {
     ]
   });
 
-  let targetList = useListData({
+  const targetList = useListData({
     initialItems: [
       { id: '5', type: 'file', name: 'Adobe Dreamweaver' },
       { id: '6', type: 'file', name: 'Adobe Fresco' },
