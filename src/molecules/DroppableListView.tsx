@@ -1,4 +1,4 @@
-import { DropItem, DroppableCollectionDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
+import { DropItem, DroppableCollectionDropEvent, DroppableCollectionInsertDropEvent, DroppableCollectionRootDropEvent, Flex, TextDropItem, View, useDragAndDrop } from "@adobe/react-spectrum";
 import { ItemData, MyListView, MyListViewProps } from "../atoms/MyListView";
 import { Draggable } from "../atoms/Draggable";
 import { useState } from "react";
@@ -51,12 +51,13 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     }
   };
 
-  const onInsertFn = async (e: any) => {
+  const onInsertFn = async (e: DroppableCollectionInsertDropEvent) => {
     console.log(e);
     const { items, target } = e;
-    const processedItems = await Promise.all(
-      items.map(async (item: TextDropItem) => {
+    const processedItems: any[] = await Promise.all(
+      items.map(async (item_: DropItem) => {
         setCnt((cnt) => cnt + 1);
+        const item = item_ as TextDropItem;
         return {
           id: 'tmp' + cnt,
           name: await item.getText('text/plain') + ` ${cnt}`,
@@ -68,14 +69,25 @@ export function DroppableListView<T extends ItemData>(props: DroppableListViewPr
     } else {
       props.lst.insertAfter(target.key, ...processedItems)
     }
+    switch (target.dropPosition) {
+      case 'before':
+        props.lst.insertBefore(target.key, ...processedItems)
+        break;
+      case 'after':
+        props.lst.insertAfter(target.key, ...processedItems)
+        break;
+      default:
+        throw new Error(`Unexpected dropPosition: ${target.dropPosition}`)
+    }
   }
 
-  const onRootDropFn = async (e: any) => {
+  const onRootDropFn = async (e: DroppableCollectionRootDropEvent) => {
     console.log(e);
     const { items } = e;
-    const processedItems = await Promise.all(
-      items.map(async (item: TextDropItem) => {
+    const processedItems: any[] = await Promise.all(
+      items.map(async (item_: DropItem) => {
         setCnt((cnt) => cnt + 1);
+        const item = item_ as TextDropItem;
         return {
           id: 'tmp' + cnt,
           name: await item.getText('text/plain') + ` ${cnt}`,
